@@ -90,4 +90,62 @@ public class EjercicioCalificado {
                     }
 
                     break;
+                    case 3:
+                    System.out.print("INGRESE EL CÓDIGO DEL ESTUDIANTE QUE DESEA ELIMINAR: ");
+                    int codigoEliminar = scanner.nextInt();
+
+                    // Buscar el estudiante por código y eliminarlo si se encuentra
+                    boolean eliminado = false;
+                    for (Estudiante estudiante : listaEstudiantes.getEstudiantes()) {
+                        if (estudiante.getCodigo() == codigoEliminar) {
+                            listaEstudiantes.eliminar(estudiante);
+                            eliminado = true;
+                            System.out.println("Estudiante eliminado con éxito.");
+
+                            // Actualizar el archivo estudiantes.txt eliminando al estudiante
+                            listaEstudiantes.actualizarArchivo();
+
+                            break; // Puedes detener la búsqueda una vez que elimines el estudiante.
+                        }
+                    }
+                    if (!eliminado) {
+                        System.out.println("No se encontró ningún estudiante con ese código.");
+                    }
+                    break;
+                    case 4:
+                    System.out.print("INDIQUE EL CÓDIGO DEL ESTUDIANTE A MODIFICAR: ");
+                    int codigoModificar = scanner.nextInt();
+
+                    // Buscar el estudiante por código y modificar sus datos si se encuentra
+                    boolean modificado = false;
+                    for (Estudiante estudiante : listaEstudiantes.getEstudiantes()) {
+                        if (estudiante.getCodigo() == codigoModificar) {
+                            System.out.println("Datos actuales del estudiante:");
+                            System.out.println(estudiante.toString());
+
+                            System.out.print("INGRESE NUEVOS NOMBRES: ");
+                            String nuevosNombres = scanner.next();
+                            System.out.print("INGRESE NUEVOS APELLIDOS: ");
+                            String nuevosApellidos = scanner.next();
+                            System.out.print("INGRESE NUEVO CICLO: ");
+                            int nuevoCiclo = scanner.nextInt();
+                            System.out.print("INGRESE NUEVA PENSION: ");
+                            double nuevaPension = scanner.nextDouble();
+
+                            // Modificar los datos del estudiante
+                            estudiante.setNombre(nuevosNombres + " " + nuevosApellidos);
+                            estudiante.setCiclo(nuevoCiclo);
+                            estudiante.setPension(nuevaPension);
+
+                            // Actualizar el archivo estudiantes.txt con los datos modificados
+                            listaEstudiantes.actualizarArchivo();
+
+                            System.out.println("¡Se modificó con éxito!");
+                            modificado = true;
+                            break; // Puedes detener la búsqueda una vez que modifiques el estudiante.
+                        }
+                    }
+                    if (!modificado) {
+                        System.out.println("No se encontró ningún estudiante con ese código.");
+                    }
                 
