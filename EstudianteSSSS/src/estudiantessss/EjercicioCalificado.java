@@ -195,4 +195,64 @@ public class EjercicioCalificado {
                     System.out.println("-------------------------------------------------------------");
                     System.out.println("¡Se modificaron los apellidos a mayúsculas con éxito.");
                     break;
-                
+                case 6:
+                    System.out.println("****** LISTA DE ESTUDIANTES ********");
+                    System.out.println("-------------------------------------------------------------");
+                    System.out.println("CODIGO DE ESTUDIANTE NOMBRE Y APELLIDOS CICLO PENSION");
+                    System.out.println("-------------------------------------------------------------");
+
+                    for (Estudiante est : listaEstudiantes.getEstudiantes()) {
+                        System.out.println(est.getCodigo() + " " + est.getNombre() + " " + est.getCiclo() + " " + est.getPension());
+                    }
+
+                    System.out.println("-------------------------------------------------------------");
+                    break;
+                case 7:
+                    System.out.println("****** LISTA DE ESTUDIANTES POR APELLIDOS ********");
+                    System.out.println("-------------------------------------------------------------");
+                    System.out.println("CODIGO DE ESTUDIANTE NOMBRE CICLO PENSION");
+                    System.out.println("-------------------------------------------------------------");
+
+                    // Ordenar la lista de estudiantes por nombre (que contendrá apellidos)
+                    List<Estudiante> estudiantesPorApellidos = new ArrayList<>(listaEstudiantes.getEstudiantes());
+                    Collections.sort(estudiantesPorApellidos, new Comparator<Estudiante>() {
+                        @Override
+                        public int compare(Estudiante est1, Estudiante est2) {
+                            return est1.getNombre().compareTo(est2.getNombre());
+                        }
+                    });
+
+                    // Mostrar la lista ordenada
+                    for (Estudiante est : estudiantesPorApellidos) {
+                        System.out.println(est.getCodigo() + " " + est.getNombre() + " " + est.getCiclo() + " " + est.getPension());
+                    }
+
+                    System.out.println("-------------------------------------------------------------");
+                    break;
+
+                case 8:
+                    // Ver todos los estudiantes por pensión
+                    // Implementa la lógica para listar estudiantes por pensión aquí.
+                    break;
+                case 9:
+                    // Total de pensiones
+                    // Implementa la lógica para calcular el total de pensiones aquí.
+                    break;
+                case 10:
+                    System.out.println("Saliendo del programa.");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+                    break;
+            }
+
+            if (opcion != 10) {
+                System.out.print("¿DESEA INGRESAR OTRA OPCIÓN? (1-SÍ, 0-NO): ");
+                int continuar = scanner.nextInt();
+                if (continuar != 1) {
+                    opcion = 10; // Terminar el bucle
+                }
+            }
+        } while (opcion != 10);
+    }
+}
