@@ -90,7 +90,7 @@ public class EjercicioCalificado {
                     }
 
                     break;
-                    case 3:
+                case 3:
                     System.out.print("INGRESE EL CÓDIGO DEL ESTUDIANTE QUE DESEA ELIMINAR: ");
                     int codigoEliminar = scanner.nextInt();
 
@@ -112,7 +112,7 @@ public class EjercicioCalificado {
                         System.out.println("No se encontró ningún estudiante con ese código.");
                     }
                     break;
-                    case 4:
+                case 4:
                     System.out.print("INDIQUE EL CÓDIGO DEL ESTUDIANTE A MODIFICAR: ");
                     int codigoModificar = scanner.nextInt();
 
@@ -148,4 +148,51 @@ public class EjercicioCalificado {
                     if (!modificado) {
                         System.out.println("No se encontró ningún estudiante con ese código.");
                     }
+                case 5:
+                    System.out.println("****** MODIFICACIÓN ESTUDIANTE MINÚSCULA ********");
+                    System.out.println("-------------------------------------------------------------");
+                    System.out.println("CODIGO DE ESTUDIANTE NOMBRE Y APELLIDOS CICLO PENSION");
+                    System.out.println("-------------------------------------------------------------");
+
+                    // Mostrar lista antes de la modificación
+                    for (Estudiante est : listaEstudiantes.getEstudiantes()) {
+                        System.out.println(est.getCodigo() + " " + est.getNombre() + " " + est.getCiclo() + " " + est.getPension());
+                    }
+
+                    System.out.println("-------------------------------------------------------------");
+
+                    // Modificar automáticamente todos los apellidos a mayúsculas
+                    for (Estudiante estudiante : listaEstudiantes.getEstudiantes()) {
+                        String[] nombresApellidos = estudiante.getNombre().split(" ");
+                        if (nombresApellidos.length > 1) {
+                            String nombre = nombresApellidos[0];
+                            String apellidosMinus = nombresApellidos[1];
+                            if (nombresApellidos.length > 2) {
+                                for (int i = 2; i < nombresApellidos.length; i++) {
+                                    apellidosMinus += " " + nombresApellidos[i];
+                                }
+                            }
+                            // Convertir la primera letra de cada apellido a mayúscula
+                            String[] apellidosArray = apellidosMinus.split(" ");
+                            for (int i = 0; i < apellidosArray.length; i++) {
+                                apellidosArray[i] = apellidosArray[i].substring(0, 1).toUpperCase() + apellidosArray[i].substring(1);
+                            }
+                            apellidos = String.join(" ", apellidosArray);
+
+                            estudiante.setNombre(nombre + " " + apellidos);
+                        }
+                    }
+
+                    // Mostrar lista después de la modificación
+                    System.out.println("****** MODIFICACIÓN ESTUDIANTE MAYÚSCULA ********");
+                    System.out.println("La nueva lista después de la modificación:");
+                    System.out.println("-------------------------------------------------------------");
+
+                    for (Estudiante est : listaEstudiantes.getEstudiantes()) {
+                        System.out.println(est.getCodigo() + " " + est.getNombre() + " " + est.getCiclo() + " " + est.getPension());
+                    }
+
+                    System.out.println("-------------------------------------------------------------");
+                    System.out.println("¡Se modificaron los apellidos a mayúsculas con éxito.");
+                    break;
                 
