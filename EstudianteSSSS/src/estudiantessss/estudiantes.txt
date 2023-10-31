@@ -1,12 +1,12 @@
-100,Ana Gabriel,5,1200.0
+100,Ana Gabriel ,5,1200.0
 101,Josel Toro,6,1000.0
 102,Osvaldo Chauca,4,1200.0
-104,Tatiana Rojas,5,1200.0
+104,Tatiana rojas,5,1200.0
 105,Alex Rojas,5,1200.0
 106,Tatiana Escalante,5,1200.0
-107,Tito Espinoza,5,1200.0
-108,Carla Mendez,5,1200.0
-109,Ana Carranza,5,1200.0
+107,Tito espinoza,5,1200.0
+108,Carla mendez,5,1200.0
+109,Ana carranza,5,1200.0
 110,Jessica Torres,5,1200.0
 111,Gina Lopez,5,1200.0
 112,Teresa Abanto,5,1200.0
