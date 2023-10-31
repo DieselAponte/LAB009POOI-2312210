@@ -231,12 +231,39 @@ public class EjercicioCalificado {
                     break;
 
                 case 8:
-                    // Ver todos los estudiantes por pensión
-                    // Implementa la lógica para listar estudiantes por pensión aquí.
+                    System.out.println("****** VER TODOS LOS ESTUDIANTES POR PENSIÓN  ******");
+
+                    // Clonar la lista de estudiantes para no modificar la original
+                    List<Estudiante> estudiantesPorPension = new ArrayList<>(listaEstudiantes.getEstudiantes());
+
+                    // Ordenar la lista de estudiantes por pensión de manera ascendente
+                    Collections.sort(estudiantesPorPension, new Comparator<Estudiante>() {
+                    @Override
+                    public int compare(Estudiante est1, Estudiante est2) {
+                    return Double.compare(est1.getPension(), est2.getPension());
+                    }
+                    });
+
+                    // Mostrar la lista ordenada con pensión y nombre
+                    System.out.println("-------------------------------------------------------------");
+                    System.out.println("PENSION NOMBRE");
+                    System.out.println("-------------------------------------------------------------");
+
+                    for (Estudiante est : estudiantesPorPension) {
+                    System.out.println(est.getPension() + " " + est.getNombre());
+                    }
+
+                    System.out.println("-------------------------------------------------------------");
                     break;
                 case 9:
-                    // Total de pensiones
-                    // Implementa la lógica para calcular el total de pensiones aquí.
+                    System.out.println("****** SUMA TOTAL DE LAS PENSIONES ******");
+                    double sumaPensiones = 0;
+
+                    for (Estudiante estudiante : listaEstudiantes.getEstudiantes()) {
+                    sumaPensiones += estudiante.getPension();
+                    }
+
+                    System.out.println("La suma total de las pensiones es: " + sumaPensiones);
                     break;
                 case 10:
                     System.out.println("Saliendo del programa.");
